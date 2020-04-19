@@ -33,11 +33,12 @@ def periodic_new_infected_interactions_check(debug=False):
         recurrent_infected = {
             'recurrent': {
                 'device_ids': device_ids,
-                'timestamp_min': min_timestamp_analysis
+                'timestamp_min_unix': datetime.timestamp(min_timestamp_analysis)
             }
         }
         print('sending new message:', recurrent_infected)
-        queue_infection.send_message(MessageBody=json.dumps(recurrent_infected))
+        if not debug:
+            queue_infection.send_message(MessageBody=json.dumps(recurrent_infected))
 
         print('updating current devices last timestamp')
         mysql_handler.update_last_analysis_timestamp(device_ids, today, debug=debug)
