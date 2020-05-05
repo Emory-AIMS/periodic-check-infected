@@ -4,22 +4,17 @@ import pymysql
 from dateutil import parser
 from datetime import datetime
 
-HOST = 'covid19-1.cblunr1bvwzp.us-east-1.rds.amazonaws.com'
-PORT = 3306
-DB = 'api_coronaviruscheck'
-
 conn = None
-
 
 def init_connection():
     global conn
     if conn is None:
         conn = pymysql.connect(
-            host=HOST,
+            host=config.get_db_host(),
             user=config.get_db_user(),
             password=config.get_db_password(),
-            port=PORT,
-            db=DB,
+            port=config.get_db_port(),
+            db=config.get_db_name(),
             cursorclass=pymysql.cursors.DictCursor
         )
 

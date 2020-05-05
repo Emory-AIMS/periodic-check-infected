@@ -14,7 +14,7 @@ def periodic_new_infected_interactions_check(debug=False):
     today = datetime.now()
     condition_infection = today - timedelta(config.days_look_back())
 
-    sqs_client = boto3.resource('sqs')
+    sqs_client = boto3.resource('sqs', config.get_sqs_region())
     queue_infection = sqs_client.Queue(config.get_sqs_patients_url())
 
     while continuation:
