@@ -5,7 +5,9 @@ SQS_QUE_URL_PATIENTS =      'https://sqs.<region>.amazonaws.com/<account id>/doc
 SQS_QUE_URL_NOTIFICATIONS = 'https://sqs.<region>.amazonaws.com/<account id>/potential-infected-notification'
 SQS_QUE_URL_DEAD_LETTERS =  'https://sqs.<region>.amazonaws.com/<account id>/doctor-infected-dead-letter'
 
-# Username and Password are passed through CLI
+# Username and Password passed through CLI have priority over DB_USER and DB_PASS
+DB_USER = ""
+DB_PASS = ""
 DB_PORT =  3306
 DB_HOST = "dbname"
 DB_NAME = "dbinstance.rds.region.amazonaws.com"
@@ -33,13 +35,13 @@ def get_db_name()
 def get_db_user():
     if len(sys.argv) > 1:
         return sys.argv[1]
-    return None
+    return DB_USER
 
 
 def get_db_password():
     if len(sys.argv) > 2:
         return sys.argv[2]
-    return None
+    return DB_PASS
 
 
 def get_timestamp_format_string():
