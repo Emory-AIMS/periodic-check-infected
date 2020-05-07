@@ -20,15 +20,15 @@ def get_sqs_patients_url():
     return SQS_QUE_URL_PATIENTS
 
 
-def get_db_port()
+def get_db_port():
     return DB_PORT
 
 
-def get_db_host()
+def get_db_host():
     return DB_HOST
 
 
-def get_db_name()
+def get_db_name():
     return DB_NAME
 
 
