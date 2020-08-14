@@ -4,7 +4,7 @@ import pymysql
 from dateutil import parser
 from datetime import datetime
 
-HOST = 'covid19-1.cblunr1bvwzp.us-east-1.rds.amazonaws.com'
+HOST = 'localhost'
 PORT = 3306
 DB = 'api_coronaviruscheck'
 
